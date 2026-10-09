@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b1424">
+  <meta name="description" content="OXYRA — Oxygen Intelligence. Fictional demo dashboard for oxygen inventory and demand forecasting.">
+  <title>OXYRA — Oxygen Intelligence</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"><script src="script.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#overview" aria-label="OXYRA home"><span class="brand-mark"><svg viewBox="0 0 40 40" fill="none"><path d="M20 5.5c-4.9 7-10.8 12.5-10.8 19a10.8 10.8 0 0 0 21.6 0c0-6.5-5.9-12-10.8-19Z" stroke="currentColor" stroke-width="2.2"/><path d="M14.5 25.5c.5 3.2 2.3 4.9 5.3 5.4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><span class="brand-copy"><strong>OXYRA</strong><small>OXYGEN INTELLIGENCE</small></span></a>
+    <div class="workspace-label">WORKSPACE</div>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="nav-link active" href="#overview" data-section="overview"><span class="nav-icon">▦</span>Overview</a>
+      <a class="nav-link" href="#hospitals" data-section="hospitals"><span class="nav-icon">⌂</span>Hospitals<span class="nav-count" id="navHospitalCount">06</span></a>
+      <a class="nav-link" href="#forecast" data-section="forecast"><span class="nav-icon">⌁</span>Demand forecast</a>
+      <a class="nav-link" href="#alerts" data-section="alerts"><span class="nav-icon">♧</span>Alerts<span class="nav-alert" id="navAlertCount">3</span></a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="readiness-card"><span class="eyebrow">NETWORK READINESS</span><div class="readiness-number"><strong id="readinessValue">82%</strong><span class="pulse-dot"></span></div><div class="readiness-track"><span id="readinessBar" style="width:82%"></span></div><p>Illustrative network status</p></div>
+      <div class="sidebar-footer"><span class="avatar">OX</span><span class="profile-copy"><strong>Demo workspace</strong><small>Sample environment</small></span><span class="more-icon">•••</span></div>
+    </div>
+  </aside>
+  <main class="main-content" id="overview">
+    <header class="topbar"><button class="mobile-menu" id="mobileMenu" aria-label="Toggle navigation">☰</button><div class="breadcrumb"><span>Workspace</span><span class="crumb-slash">/</span><strong>Overview</strong></div><div class="topbar-right"><span class="live-indicator"><i></i> DEMO ENVIRONMENT</span><button class="icon-button" id="refreshDashboard" aria-label="Refresh dashboard" title="Refresh sample data">↻</button><div class="top-avatar">OX</div></div></header>
+    <section class="page-heading"><div><div class="eyebrow blue-eyebrow">OXYGEN SUPPLY NETWORK</div><h1>Good evening<span class="heading-period">.</span></h1><p class="page-subtitle">A clear view of inventory, projected demand, and network readiness.</p></div><div class="date-chip"><span class="date-icon">◷</span><span id="currentDate">Today</span></div></section>
+    <section class="metric-grid" aria-label="Network summary">
+      <article class="metric-card"><div class="metric-top"><span class="metric-label">Hospitals monitored</span><span class="metric-icon icon-blue">⌂</span></div><div class="metric-value" id="metricHospitals">06</div><div class="metric-foot"><i class="foot-dot blue-dot"></i>Across sample network</div></article>
+      <article class="metric-card"><div class="metric-top"><span class="metric-label">Available oxygen</span><span class="metric-icon icon-cyan">◉</span></div><div class="metric-value"><span id="metricStock">18,420</span><small> m³</small></div><div class="metric-foot"><i class="foot-dot cyan-dot"></i>Illustrative stock total</div></article>
+      <article class="metric-card"><div class="metric-top"><span class="metric-label">Estimated coverage</span><span class="metric-icon icon-violet">⌁</span></div><div class="metric-value"><span id="metricCoverage">4.8</span><small> days</small></div><div class="metric-foot"><i class="foot-dot violet-dot"></i>At modeled daily demand</div></article>
+      <article class="metric-card"><div class="metric-top"><span class="metric-label">Needs attention</span><span class="metric-icon icon-amber">!</span></div><div class="metric-value" id="metricRisk">02</div><div class="metric-foot"><i class="foot-dot amber-dot"></i>Sample low-coverage sites</div></article>
+    </section>
+    <section class="content-grid">
+      <article class="panel forecast-panel" id="forecast"><div class="panel-header"><div><div class="eyebrow">PREDICTIVE OVERVIEW</div><h2>Demand forecast</h2><p class="panel-description">Modeled daily oxygen demand across the network.</p></div><div class="segmented-control" role="group" aria-label="Forecast range"><button class="range-button active" data-forecast-days="7">7D</button><button class="range-button" data-forecast-days="30">30D</button><button class="range-button" data-forecast-days="90">90D</button></div></div><div class="chart-summary"><div><span class="chart-legend"></span>Estimated demand</div><span class="chart-unit">m³ / day</span></div><div class="chart-container" id="forecastChart" aria-label="Illustrative demand forecast chart"></div><div class="chart-footer"><span><i class="footer-check">✓</i> Forecast generated from sample data</span><span id="forecastRangeLabel">Next 7 days</span></div></article>
+      <article class="panel alerts-panel" id="alerts"><div class="panel-header compact-header"><div><div class="eyebrow">PRIORITY FEED</div><h2>Network alerts</h2></div><span class="alert-count-pill" id="alertCountPill">03</span></div><div class="alerts-list" id="alertsList"></div><a class="text-link" href="#hospitals">Review hospital inventory <span>↗</span></a></article>
+    </section>
+    <section class="panel hospitals-panel" id="hospitals"><div class="panel-header hospital-header"><div><div class="eyebrow">NETWORK DIRECTORY</div><h2>Hospital inventory</h2><p class="panel-description">Fictional sites and values for product demonstration.</p></div><div class="table-actions"><label class="search-box"><span>⌕</span><input type="search" id="hospitalSearch" placeholder="Search hospitals..." aria-label="Search hospitals"></label><select id="riskFilter" class="filter-select" aria-label="Filter hospitals by status"><option value="all">All statuses</option><option value="stable">Stable</option><option value="watch">Watch</option><option value="critical">Critical</option></select></div></div>
+      <div class="table-wrap"><table><thead><tr><th>HOSPITAL / SITE ID</th><th>AVAILABLE STOCK</th><th>DAILY DEMAND</th><th>EST. COVERAGE</th><th>STATUS</th><th><span class="sr-only">Details</span></th></tr></thead><tbody id="hospitalTableBody"></tbody></table><div class="empty-state" id="emptyState" hidden><span>⌕</span><strong>No hospitals found</strong><p>Try changing the search or status filter.</p></div></div>
+      <div class="table-footer"><span id="tableResultCount">Showing 6 of 6 sites</span><span>Sample data · Not for clinical use</span></div>
+    </section>
+    <footer class="page-footer"><span><b class="footer-brand">OXYRA</b> · Oxygen Intelligence</span><span>Concept dashboard <b>•</b> All figures are illustrative</span></footer>
+  </main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<dialog class="detail-dialog" id="hospitalDialog"><form method="dialog"><button class="dialog-close" aria-label="Close details">×</button></form><div id="hospitalDetailContent"></div></dialog>
+</body></html>
